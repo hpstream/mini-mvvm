@@ -20,8 +20,9 @@ export default class Compile {
         wrap.innerHTML = template.trim();
 
         const node = wrap.children[0];
+        // console.log(template)
         const ast = parseElement2AST(node);
-
+        // console.log(ast)
         const renderStr = `
 var ${spFn} = function(args){
     var r = [];
@@ -45,8 +46,9 @@ with(this) {
 }
         `;
 
+        // console.log(this.ast2Render(ast));
         if (process.env.NODE_ENV !== 'production') {
-            console.log(renderStr);
+            // console.log(renderStr);
         }
         return new Function('h', renderStr);
     }
@@ -129,7 +131,6 @@ with(this) {
                 /\{\{(.*?)\}\}/g,
                 `' + ($1) + '`
             ) + `'`;
-
         return `h('', ${content})`;
     }
 

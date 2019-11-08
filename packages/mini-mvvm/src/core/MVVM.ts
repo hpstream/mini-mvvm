@@ -1,4 +1,4 @@
-import { patch, h } from 'mini-vdom';
+import { patch, h } from 'mini-vdom/src/index';
 import BaseMVVM, { IMvvmOptions } from './BaseMVVM';
 import Compile from '../lib/Compile';
 import Observer, { proxy } from '../lib/Observer';
@@ -58,6 +58,7 @@ export default class MVVM extends BaseMVVM {
     private _compile(): void {
         const { el, template } = this.$options;
         if (!this.$options.render && (template || el)) {
+            
             this.$options.render = Compile.render(
                 template
                 || document.querySelector(el).outerHTML
@@ -164,7 +165,6 @@ export default class MVVM extends BaseMVVM {
                     this.lastVnode,
                     this.vnode
                 );
-
                 this.el = this.vnode.elm as HTMLElement;
 
                 needUpdate = false;
