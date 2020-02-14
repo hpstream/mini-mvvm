@@ -1,4 +1,4 @@
-import { patch, h } from 'mini-vdom/src/index';
+import { patch, h } from 'mini-vdom';
 import BaseMVVM, { IMvvmOptions } from './BaseMVVM';
 import Compile from '../lib/Compile';
 import Observer, { proxy } from '../lib/Observer';
